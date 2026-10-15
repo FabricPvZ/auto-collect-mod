@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "cn.enaium.fabricpvz.autocollect.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "BoardInputMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
