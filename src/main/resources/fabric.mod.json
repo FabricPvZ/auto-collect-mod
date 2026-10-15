@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "auto-collect-mod",
+  "version": "1.0.0",
+  "name": "PvZ Auto Collect Mod",
+  "description": "Collects sun and coins for you: every sun and coin the player could click is clicked, with a toggle button next to the menu button.",
+  "authors": [
+    "FabricPvZ"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "cn.enaium.fabricpvz.autocollect.AutoCollectMod"
+    ]
+  },
+  "mixins": [
+    "auto-collect-mod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "fabric-language-kotlin": ">=1.14.2",
+    "api-events": ">=1.0.0",
+    "pvz-portable": "*"
+  }
+}
