@@ -160,7 +160,7 @@ which loader, Mixin and mods all write into):
 	   |-- api-base 1.0.0
 	   |-- api-events 1.0.0
 	   |-- api-plant 1.0.0
-	   \-- api-zombie 1.0.0                                 # the four modules come from inside the aggregate jar
+	   \-- api-zombie 1.0.0                                 # the five modules come from inside the aggregate jar
 	- fabric-language-kotlin 1.14.2+kotlin.2.4.21           # the language module this mod requires
 	   |-- org_jetbrains_kotlin_kotlin-stdlib 2.4.21        # …and the runtime stdlib it nests
 	   \-- … 12 more nested libraries (kotlin-reflect, kotlinx-*)
@@ -225,9 +225,12 @@ cd auto-collect-mod
 cp build/libs/auto-collect-mod-1.0.0.jar <gamedir>/mods/
 ```
 
-`./gradlew runClient` boots the game through the real loader with the built jar in `run/mods` (the
-toolchain plugin - `cn.enaium.fabricpvz.loom`, applied above and resolved from the Gradle Plugin
-Portal like every other mod of this workspace - provides the task); the mod only needs its own jar -
+`./gradlew runClient` is a development run: the mod's own output (its classes and resources) and the
+API aggregate jar are on the class path and the loader discovers the mod there
+(`-Dfabric.development=true`), with nothing copied into `run/mods` (the toolchain plugin -
+`cn.enaium.fabricpvz.loom` version 1.0.1, applied above and resolved from the Gradle Plugin Portal,
+which serves it; the settings file keeps `mavenLocal()` after the portal only as a fallback for a
+version the portal does not serve yet - provides the task); the mod only needs its own jar -
 the loader, Mixin, ASM, the API modules, the game and the Kotlin standard library all come from the
 launcher.
 

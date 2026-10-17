@@ -4,11 +4,12 @@
 // the end-to-end test, the runClient task and the publication of the mod jar under mavenLocal
 // coordinates. A mod never declares any of those artifacts by hand; see loom.
 //
-// The version is the plugin's own (every artifact of this workspace is released under 1.0.0); the
-// plugin itself comes from the Gradle Plugin Portal (settings.gradle.kts lists the local fallback
-// used while the first publication is under review, and says when to remove it).
+// The version is the plugin's own (every artifact of this workspace is released under its own
+// version); the plugin itself resolves from the Gradle Plugin Portal, which serves it
+// (settings.gradle.kts lists the portal first and keeps mavenLocal after it as an optional fallback
+// for a version the portal does not serve yet).
 plugins {
-    id("cn.enaium.fabricpvz.loom") version "1.0.0"
+    id("cn.enaium.fabricpvz.loom") version "1.0.1"
 }
 
 dependencies {
