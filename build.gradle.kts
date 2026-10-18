@@ -9,7 +9,7 @@
 // (settings.gradle.kts lists the portal first and keeps mavenLocal after it as an optional fallback
 // for a version the portal does not serve yet).
 plugins {
-    id("cn.enaium.fabricpvz.loom") version "1.0.8"
+    id("cn.enaium.fabricpvz.loom") version "1.0.9"
 }
 
 dependencies {
@@ -23,7 +23,7 @@ dependencies {
     // against which game this mod was built. While working on the game's own code, point it at the
     // distribution that build writes instead (pvz(files("../PvZ-Portable/build/distributions")) or
     // pvz(files("../PvZ-Portable/build/mcversion/PvZ-Portable-<version>"))).
-    pvz("cn.enaium.fabricpvz:pvz-portable:1.2.4")
+    pvz("cn.enaium.fabricpvz:pvz-portable:1.2.5")
 }
 
 group = "cn.enaium.fabricpvz"
