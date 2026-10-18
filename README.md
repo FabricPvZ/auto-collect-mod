@@ -6,7 +6,7 @@ next to the game's own **Menu** button switches it off and on again.
 
 It is a plain Fabric mod: `fabric.mod.json`, a `ModInitializer`, one small Mixin, and a jar that is
 loaded from `<gamedir>/mods` by the real Fabric Loader through
-`cn.enaium.fabricpvz:fabric-provider` (the loader's `GameProvider` for this port).
+the game provider the game jar itself carries (`cn.enaium.fabricpvz.provider`).
 
 The mod's own code is **Kotlin** (`src/main/kotlin`, compiled by the workspace toolchain plugin); its
 one Mixin stays Java (`src/main/java/.../mixin`), because a Mixin configuration is a Java class
@@ -14,7 +14,7 @@ annotated with `@Mixin` and Mixin's own processor reads it as such. The end-to-e
 too. The entry point is a Kotlin `class` with a no-argument constructor, not an `object`: Fabric
 Loader instantiates a `ModInitializer` reflectively, which a Kotlin `object` (private constructor)
 could not satisfy without a language adapter this workspace does not ship. The Kotlin standard library
-is a launcher library (`fabric-provider` puts one copy on the launch class path), so the mod jar
+is a launcher library (the game's launch libraries put one copy on the launch class path), so the mod jar
 carries its own classes and resources only - never `kotlin/`.
 
 | mod id | version | entry point |
@@ -180,7 +180,7 @@ the loader's way of printing a nested jar (see `loom/README.md`, "The API").
 
 Every line above is the same shape - `[time] [thread/LEVEL] (logger) message` - because Fabric
 Loader's log, the Mixin subsystem's log and the mods' log all go through the workspace's one SLF4J +
-Log4j stack (see `fabric-provider/README.md`). The `auto-collect-mod` lines carry the mod id as their
+Log4j stack (see `../PvZ-Portable/GAME-PROVIDER.md`). The `auto-collect-mod` lines carry the mod id as their
 logger, the `FabricLoader/…` ones carry the loader's own log category.
 
 The `auto-collect-mod` "entry point class ran" line is the runtime probe: the stdlib this mod's Kotlin

@@ -31,7 +31,7 @@ import cn.enaium.fabricpvz.provider.PvzGameProvider;
  * <p>The test does exactly what a launcher does: it copies the <em>built mod jar</em> into a real
  * {@code mods/} directory - together with the sibling speed mod's jar, which is installed in this
  * workspace - and starts {@code net.fabricmc.loader.impl.launch.knot.KnotClient} in a second JVM with
- * the game, the loader (plus Mixin and ASM, pulled in by {@code cn.enaium.fabricpvz:fabric-provider})
+ * the game, the loader (plus Mixin and ASM, the game's launch libraries)
  * and the API modules on the class path. The loader resolves both mods, runs their
  * {@code ModInitializer}s (this mod's is a Kotlin class), registers their Mixin configurations and
  * only then calls the game entry point, which this test redirects to
@@ -282,7 +282,7 @@ class AutoCollectEndToEndTest {
         assertTrue(entries.contains("cn/enaium/fabricpvz/autocollect/mixin/BoardInputMixin.class"),
                 "the Java mixin");
         // The mod's Kotlin classes are in the jar, the Kotlin standard library is not: it is a launcher
-        // library here (fabric-provider publishes it), shared by every Kotlin mod of an installation.
+        // library here (the game's launch libraries publish it), shared by every Kotlin mod of an installation.
         assertTrue(entries.stream().noneMatch(name -> name.startsWith("kotlin/")),
                 "a mod jar must bundle no stdlib classes, got " + entries);
     }
