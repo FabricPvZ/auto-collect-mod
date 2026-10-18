@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 import kotlin.KotlinVersion;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import cn.enaium.fabricpvz.provider.PvzGameProvider;
 
 /**
  * End-to-end verification of the auto-collect mod on the real Fabric Loader.
@@ -112,7 +113,10 @@ class AutoCollectEndToEndTest {
 
         // 1) The loader resolved the game, the API modules, this mod and the speed mod it sits next
         //    to, and ran the entry points.
-        assertEquals("1.0.0", values.get("gameVersion"), "the provider must report the game's version");
+        // Against the provider's own statement, not a literal: what this asserts is that the loader is
+        // handed the version the game provider publishes, whatever the game version is.
+        assertEquals(PvzGameProvider.DEFAULT_GAME_VERSION, values.get("gameVersion"),
+            "the provider must report the game's version");
         assertEquals("client", values.get("environment"));
         assertEquals("true", values.get("autoCollectModLoaded"));
         assertEquals("true", values.get("speedModLoaded"),

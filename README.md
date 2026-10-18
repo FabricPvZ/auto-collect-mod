@@ -228,7 +228,7 @@ cp build/libs/auto-collect-mod-1.0.0.jar <gamedir>/mods/
 `./gradlew runClient` is a development run: the mod's own output (its classes and resources) and the
 API aggregate jar are on the class path and the loader discovers the mod there
 (`-Dfabric.development=true`), with nothing copied into `run/mods` (the toolchain plugin -
-`cn.enaium.fabricpvz.loom` version 1.0.1, applied above and resolved from the Gradle Plugin Portal,
+`cn.enaium.fabricpvz.loom` version 1.0.2, applied above and resolved from the Gradle Plugin Portal,
 which serves it; the settings file keeps `mavenLocal()` after the portal only as a fallback for a
 version the portal does not serve yet - provides the task); the mod only needs its own jar -
 the loader, Mixin, ASM, the API modules, the game and the Kotlin standard library all come from the
