@@ -62,7 +62,16 @@ class AutoCollectToggle(private val mBoard: Board) {
     fun isVisible(): Boolean = !mBoard.mMenuButton.mBtnNoDraw
 
     /** The label the button shows: the state of [AutoCollect]. */
-    fun label(): String = if (AutoCollect.isEnabled()) ON_LABEL else OFF_LABEL
+    /**
+     * The button's label, through the API's translation facility: a translation table (the i18n mod's,
+     * or one the player drops next to the game) may carry `[AUTO_COLLECT_ON]` / `[AUTO_COLLECT_OFF]`,
+     * and plain "ON" / "OFF" is what a language without those entries shows. Looked up per draw, so a
+     * language switch takes effect on the next frame.
+     */
+    fun label(): String = if (AutoCollect.isEnabled())
+        cn.enaium.fabricpvz.api.text.Translations.translate("[AUTO_COLLECT_ON]", ON_LABEL)
+    else
+        cn.enaium.fabricpvz.api.text.Translations.translate("[AUTO_COLLECT_OFF]", OFF_LABEL)
 
     /** The button's rectangle in board coordinates. */
     fun rect(): Rect = Rect(mButton.mX, mButton.mY, mButton.mWidth, mButton.mHeight)

@@ -32,6 +32,12 @@ carries its own classes and resources only - never `kotlin/`.
 The button sits in the Menu button's own band, 4 pixels to its left, and shows the state of the mod:
 `ON` while it is collecting, `OFF` while it is not. Pressing it flips the state; the label follows.
 
+The two labels are this mod's own text, and they travel with it: `src/main/resources/i18n/zh-CN.json`
+holds them (`开` / `关`), and the i18n mod of the installation reads that file the way it reads every
+other mod's - which is why nothing of this mod's text is written into another mod's table. With that
+mod installed the button reads `开` and `关` in Chinese, and `ON` and `OFF` (the fallback the label is
+asked with) without it.
+
 **It is on by default.** That is the mod's whole purpose: a player who installs an auto-collect mod
 expects the sun and the coins to be collected, without having to find a button first. Collecting is
 never a loss - both counters only go up, and the game credits exactly what a click credits - so the
