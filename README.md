@@ -180,9 +180,10 @@ which loader, Mixin and mods all write into):
 [20:34:08] [main/INFO] (auto-collect-mod) [auto-collect-mod] Kotlin 2.4.21 entry point class ran (stdlib from …/run/.fabric/processedMods/org_jetbrains_kotlin_kotlin-stdlib-2.4.21-….jar, not from the mod jar)
 ```
 
-The four `api-*` modules are the nested jars of `fabric-api` (the aggregate jar on the class path, its
-modules under `META-INF/jars/`), not four jars on the class path of their own: the indented lines are
-the loader's way of printing a nested jar (see `loom/README.md`, "The API").
+The four `api-*` modules are the nested jars of `fabric-api`, whose aggregate this mod carries inside
+its own jar (`META-INF/jars/fabric-api-1.2.2.jar`, its modules under that jar's own `META-INF/jars/`),
+not jars on the class path of their own: the indented lines are the loader's way of printing a nested
+jar (see `loom/README.md`, "Jar-in-jar").
 
 Every line above is the same shape - `[time] [thread/LEVEL] (logger) message` - because Fabric
 Loader's log, the Mixin subsystem's log and the mods' log all go through the workspace's one SLF4J +
